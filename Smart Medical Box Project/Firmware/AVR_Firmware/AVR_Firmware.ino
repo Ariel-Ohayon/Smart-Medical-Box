@@ -13,14 +13,13 @@ void gate_open();
 // -- Functions -- //
 
 void setup() {
+	Serial.begin(9600);
 	lcd_init();
 	lcd_clear();
 	lcd_setCursor(1,1);
 	lcd_print("Smart Medical");
 	lcd_setCursor(2,7);
 	lcd_print("Box");
-	/* lcd_data(up);
-	   lcd_data(down); */
 	Keypad_Init();
 	gate.attach(gate_pin);
 	gate_close();
@@ -31,13 +30,9 @@ void setup() {
 	while(Read_Key() != '#');
 }
 
-void loop() {
-	lcd_clear();
-	lcd_setCursor(1,4);
-	lcd_print("Menu");
-	lcd_setCursor(2,0);
-	lcd_print("1.Tahboshet");
-	lcd_print_end_line();
+void loop()
+{
+	char option = menu();
 	while(1);
 }
 
@@ -59,4 +54,61 @@ void lcd_print_end_line()
 	lcd_setCursor(2,13);
 	lcd_print("|D");
 	lcd_data(down);
+}
+
+char menu()
+{
+	int disp = 0;
+	char key = 0;
+	while(1)
+	{
+		if(disp == 0)
+		{
+			lcd_clear();
+			lcd_setCursor(1,4);
+			lcd_print("Menu");
+			lcd_setCursor(2,0);
+			lcd_print("1.Option 1");
+			lcd_print_end_line();
+		}
+		else if(disp == 1)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("2.Option 2");
+			lcd_setCursor(2,0);
+			lcd_print("3.Option 3");
+			lcd_print_end_line();
+		}
+		else if(disp == 2)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("4.Option 4");
+			lcd_setCursor(2,0);
+			lcd_print("5.Option 5");
+			lcd_print_end_line();
+		}
+		while(key == 0)
+		{
+			key = Read_Key();
+			if(key == 'A')
+			{
+				disp--;
+				if(disp < 0)
+				{
+					disp = 2;
+				}
+			}
+			else if(key == 'D')
+			{
+				disp++;
+				if(disp == 3)
+				{
+					disp = 0;
+				}
+			}
+		}
+		key = 0;
+	}
 }
