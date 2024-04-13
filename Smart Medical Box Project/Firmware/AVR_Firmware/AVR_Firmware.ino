@@ -33,7 +33,74 @@ void setup() {
 void loop()
 {
 	char option = menu();
-	while(1);
+	switch(option)
+	{
+		case 1:
+			option1();
+			delay(3000);
+			break;
+		case 2:
+			option2();
+			delay(3000);
+			break;
+		case 3:
+			option3();
+			delay(3000);
+			break;
+		case 4:
+			option4();
+			delay(3000);
+			break;
+		case 5:
+			option5();
+			delay(3000);
+			break;
+	}
+}
+
+void option1()
+{
+	lcd_clear();
+	lcd_setCursor(1,0);
+	lcd_print("Option 1");
+	lcd_setCursor(2,0);
+	lcd_print("Selected");
+}
+
+void option2()
+{
+	lcd_clear();
+	lcd_setCursor(1,0);
+	lcd_print("Option 2");
+	lcd_setCursor(2,0);
+	lcd_print("Selected");
+}
+
+void option3()
+{
+	lcd_clear();
+	lcd_setCursor(1,0);
+	lcd_print("Option 3");
+	lcd_setCursor(2,0);
+	lcd_print("Selected");
+}
+
+void option4()
+{
+	lcd_clear();
+	lcd_setCursor(1,0);
+	lcd_print("Option 4");
+	lcd_setCursor(2,0);
+	lcd_print("Selected");
+}
+
+void option5()
+{
+	lcd_clear();
+	lcd_setCursor(1,0);
+	lcd_print("Option 5");
+	lcd_setCursor(2,0);
+	lcd_print("Selected");
 }
 
 void gate_open()
@@ -48,11 +115,9 @@ void gate_close()
 
 void lcd_print_end_line()
 {
-	lcd_setCursor(1,13);
-	lcd_print("|A");
+	lcd_setCursor(1,15);
 	lcd_data(up);
-	lcd_setCursor(2,13);
-	lcd_print("|D");
+	lcd_setCursor(2,15);
 	lcd_data(down);
 }
 
@@ -65,7 +130,7 @@ char menu()
 		if(disp == 0)
 		{
 			lcd_clear();
-			lcd_setCursor(1,4);
+			lcd_setCursor(1,5);
 			lcd_print("Menu");
 			lcd_setCursor(2,0);
 			lcd_print("1.Option 1");
@@ -107,6 +172,14 @@ char menu()
 				{
 					disp = 0;
 				}
+			}
+			else if(key >= '1' && key <= '5')
+			{
+				return (key - '0');
+			}
+			else
+			{
+				key = 0;
 			}
 		}
 		key = 0;
