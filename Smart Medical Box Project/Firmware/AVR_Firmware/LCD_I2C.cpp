@@ -67,25 +67,28 @@ void lcd_create_char(uint8_t address, uint8_t *pixels)
 void lcd_init () // initializing LCD (16x2) and work with 4 bit mode
 {
 	int i;
+	
 	uint8_t up[] = {
-		0b00000,
-		0b00100,
-		0b01110,
-		0b01110,
-		0b11111,
-		0b11111,
-		0b00000,
-		0b00000};
+		B10010,
+		B10111,
+		B10000,
+		B10000,
+		B10010,
+		B10101,
+		B10111,
+		B10101
+	};
 	
 	uint8_t down[] = {
-		0b00000,
-		0b11111,
-		0b11111,
-		0b01110,
-		0b01110,
-		0b00100,
-		0b00000,
-		0b00000};
+		B10110,
+		B10101,
+		B10101,
+		B10101,
+		B10110,
+		B10000,
+		B10111,
+		B10010
+	};
 		
 	lcd_cmd (0x02); // set the addres on 0; 
 	lcd_cmd (0x28); // work with 4 bit mode
