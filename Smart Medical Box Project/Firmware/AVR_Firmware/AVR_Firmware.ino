@@ -40,23 +40,18 @@ void loop()
 			break;
 		case 2:
 			option2();
-			delay(3000);
 			break;
 		case 3:
 			option3();
-			delay(3000);
 			break;
 		case 4:
 			option4();
-			delay(3000);
 			break;
 		case 5:
 			option5();
-			delay(3000);
 			break;
 		case 6:
 			option6();
-			delay(3000);
 			break;
 	}
 	door_close();
@@ -218,95 +213,721 @@ void option1()
 
 void option2()
 {
-/*
-	Bleeding
-	
-	Stopping the bleeding with a medical regimen or
-	a medical gas pack.
-	Backing up the bleeding site with a clean pad to
-	prevent further infection.
-*/
-	lcd_clear();
-	lcd_setCursor(1,0);
-	lcd_print("Bleeding");
-	lcd_setCursor(2,0);
-	lcd_print("Selected");
+	int disp = 0;
+	char key = 0;
+	while(1)
+	{
+		if(disp == 0)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Bleeding Select");
+			lcd_setCursor(2,0);
+			lcd_print("Press D to open");
+			lcd_print_end_line();
+		}
+		else if(disp == 1)
+		{
+			door_open();
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Stopping the");
+			lcd_setCursor(2,0);
+			lcd_print("bleeding with a");
+			lcd_print_end_line();
+		}
+		else if(disp == 2)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("medical regimen");
+			lcd_setCursor(2,0);
+			lcd_print("or a medical");
+			lcd_print_end_line();
+		}
+		else if(disp == 3)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("gas pack.");
+			lcd_setCursor(2,0);
+			lcd_print("Backing up the");
+			lcd_print_end_line();
+		}
+		else if(disp == 4)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("bleeding site");
+			lcd_setCursor(2,0);
+			lcd_print("with a clean");
+			lcd_print_end_line();
+		}
+		else if(disp == 5)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("pad to prevent");
+			lcd_setCursor(2,0);
+			lcd_print("further");
+			lcd_print_end_line();
+		}
+		else if(disp == 6)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("infection.");
+			lcd_print_end_line();
+		}
+		else if(disp == 7)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("press # to");
+			lcd_setCursor(2,0);
+			lcd_print("close the door back menu");
+			lcd_print_end_line();
+		}
+		else if(disp == 8)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("and back menu");
+			lcd_print_end_line();
+		}
+		while(key == 0)
+		{
+			key = Read_Key();
+			if(key == 'A')
+			{
+				disp--;
+				if(disp < 0)
+				{
+					disp = 8;
+				}
+			}
+			else if(key == 'D')
+			{
+				disp++;
+				if(disp == 9)
+				{
+					disp = 0;
+				}
+			}
+			else if(key == '#')
+			{
+				return 0;
+			}
+			else
+			{
+				key = 0;
+			}
+		}
+		key = 0;
+	}
 }
 
 void option3()
 {
-/*
-	Fracture
-	
-	Support the injured area with a medical regimen or a
-	medical gas pack.
-	# Evaluation suggestion: Call the EMS or go to a first
-	aid center for medical treatment as soon as possible.
-*/
-	lcd_clear();
-	lcd_setCursor(1,0);
-	lcd_print("Fracture");
-	lcd_setCursor(2,0);
-	lcd_print("Selected");
+	int disp = 0;
+	char key = 0;
+	while(1)
+	{
+		if(disp == 0)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Fracture");
+			lcd_setCursor(2,0);
+			lcd_print("Press D to open");
+			lcd_print_end_line();
+		}
+		else if(disp == 1)
+		{
+			door_open();
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Support the");
+			lcd_setCursor(2,0);
+			lcd_print("injured area");
+			lcd_print_end_line();
+		}
+		else if(disp == 2)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("with a medical");
+			lcd_setCursor(2,0);
+			lcd_print("regimen or a");
+			lcd_print_end_line();
+		}
+		else if(disp == 3)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("medical gas");
+			lcd_setCursor(2,0);
+			lcd_print("pack.");
+			lcd_print_end_line();
+		}
+		else if(disp == 4)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("#Evaluation");
+			lcd_setCursor(2,0);
+			lcd_print("suggestion:");
+			lcd_print_end_line();
+		}
+		else if(disp == 5)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("call the EMS");
+			lcd_setCursor(2,0);
+			lcd_print("or go to a");
+			lcd_print_end_line();
+		}
+		else if(disp == 6)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("first aid");
+			lcd_setCursor(2,0);
+			lcd_print("center for");
+			lcd_print_end_line();
+		}
+		else if(disp == 7)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("medical");
+			lcd_setCursor(2,0);
+			lcd_print("treatment as");
+			lcd_print_end_line();
+		}
+		else if(disp == 8)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("soon as");
+			lcd_setCursor(2,0);
+			lcd_print("possible.");
+			lcd_print_end_line();
+		}
+		else if(disp == 9)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("press # to");
+			lcd_setCursor(2,0);
+			lcd_print("close the door back menu");
+			lcd_print_end_line();
+		}
+		else if(disp == 10)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("and back menu");
+			lcd_print_end_line();
+		}
+		while(key == 0)
+		{
+			key = Read_Key();
+			if(key == 'A')
+			{
+				disp--;
+				if(disp < 0)
+				{
+					disp = 10;
+				}
+			}
+			else if(key == 'D')
+			{
+				disp++;
+				if(disp == 11)
+				{
+					disp = 0;
+				}
+			}
+			else if(key == '#')
+			{
+				return 0;
+			}
+			else
+			{
+				key = 0;
+			}
+		}
+		key = 0;
+	}
 }
 
 void option4()
 {
-/*
-	Deep cut
-	
-	Apply pressure to the cut to stop the bleeding and keep
-	the area clean.
-	Clean the cut with hot soapy water, if the cut is too
-	deep drip hydrogen peroxide to stop the bleeding and
-	prevent infection, then cover it with a wound plaster.
-*/
-	lcd_clear();
-	lcd_setCursor(1,0);
-	lcd_print("Deep cut");
-	lcd_setCursor(2,0);
-	lcd_print("Selected");
+	int disp = 0;
+	char key = 0;
+	while(1)
+	{
+		if(disp == 0)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Deep cut");
+			lcd_setCursor(2,0);
+			lcd_print("Press D to open");
+			lcd_print_end_line();
+		}
+		else if(disp == 1)
+		{
+			door_open();
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Apply pressure");
+			lcd_setCursor(2,0);
+			lcd_print("to the cut to");
+			lcd_print_end_line();
+		}
+		else if(disp == 2)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("stop the");
+			lcd_setCursor(2,0);
+			lcd_print("bleeding and");
+			lcd_print_end_line();
+		}
+		else if(disp == 3)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("keep the area");
+			lcd_setCursor(2,0);
+			lcd_print("clean.");
+			lcd_print_end_line();
+		}
+		else if(disp == 4)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Clean the cut");
+			lcd_setCursor(2,0);
+			lcd_print("with hot soapy");
+			lcd_print_end_line();
+		}
+		else if(disp == 5)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("water, if the");
+			lcd_setCursor(2,0);
+			lcd_print("cut is too deep");
+			lcd_print_end_line();
+		}
+		else if(disp == 6)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("drip hydrogen");
+			lcd_setCursor(2,0);
+			lcd_print("peroxide to");
+			lcd_print_end_line();
+		}
+		else if(disp == 7)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("stop the");
+			lcd_setCursor(2,0);
+			lcd_print("bleeding and");
+			lcd_print_end_line();
+		}
+		else if(disp == 8)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("prevent");
+			lcd_setCursor(2,0);
+			lcd_print("infection, then");
+			lcd_print_end_line();
+		}
+		else if(disp == 9)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("cover it with a");
+			lcd_setCursor(2,0);
+			lcd_print("wound plaster.");
+			lcd_print_end_line();
+		}
+		else if(disp == 10)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("press # to");
+			lcd_setCursor(2,0);
+			lcd_print("close the door back menu");
+			lcd_print_end_line();
+		}
+		else if(disp == 11)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("and back menu");
+			lcd_print_end_line();
+		}
+		while(key == 0)
+		{
+			key = Read_Key();
+			if(key == 'A')
+			{
+				disp--;
+				if(disp < 0)
+				{
+					disp = 11;
+				}
+			}
+			else if(key == 'D')
+			{
+				disp++;
+				if(disp == 12)
+				{
+					disp = 0;
+				}
+			}
+			else if(key == '#')
+			{
+				return 0;
+			}
+			else
+			{
+				key = 0;
+			}
+		}
+		key = 0;
+	}
 }
 
 void option5()
 {
-
-/*
-	Asthma attack
-	
-	Let the person breathe easily and be at rest.
-	If he has trouble breathing, help him use his inhaler
-	or a nebulizer.
-	# If the attack does not improve, the assessment
-	suggests the following: call the emergency center or take
-	the injured person to the nearest hospital.
-*/
-	lcd_clear();
-	lcd_setCursor(1,0);
-	lcd_print("Asthma attack");
-	lcd_setCursor(2,0);
-	lcd_print("Selected");
+	int disp = 0;
+	char key = 0;
+	while(1)
+	{
+		if(disp == 0)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Asthma attack");
+			lcd_setCursor(2,0);
+			lcd_print("Press D to open");
+			lcd_print_end_line();
+		}
+		else if(disp == 1)
+		{
+			door_open();
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Let the person");
+			lcd_setCursor(2,0);
+			lcd_print("breathe easily");
+			lcd_print_end_line();
+		}
+		else if(disp == 2)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("and be at rest.");
+			lcd_setCursor(2,0);
+			lcd_print("If he has");
+			lcd_print_end_line();
+		}
+		else if(disp == 3)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("trouble");
+			lcd_setCursor(2,0);
+			lcd_print("breathing, help");
+			lcd_print_end_line();
+		}
+		else if(disp == 4)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("him use his");
+			lcd_setCursor(2,0);
+			lcd_print("inhaler or a");
+			lcd_print_end_line();
+		}
+		else if(disp == 5)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("nebulizer.");
+			lcd_setCursor(2,0);
+			lcd_print("#If the attack");
+			lcd_print_end_line();
+		}
+		else if(disp == 6)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("does not");
+			lcd_setCursor(2,0);
+			lcd_print("improve, the");
+			lcd_print_end_line();
+		}
+		else if(disp == 7)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("assessment");
+			lcd_setCursor(2,0);
+			lcd_print("suggests the");
+			lcd_print_end_line();
+		}
+		else if(disp == 8)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("following:");
+			lcd_setCursor(2,0);
+			lcd_print("call the");
+			lcd_print_end_line();
+		}
+		else if(disp == 9)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("emergency");
+			lcd_setCursor(2,0);
+			lcd_print("center or take");
+			lcd_print_end_line();
+		}
+		else if(disp == 10)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("the injured");
+			lcd_setCursor(2,0);
+			lcd_print("person to the");
+			lcd_print_end_line();
+		}
+		else if(disp == 11)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("nearest");
+			lcd_setCursor(2,0);
+			lcd_print("hospital.");
+			lcd_print_end_line();
+		}
+		else if(disp == 12)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("press # to");
+			lcd_setCursor(2,0);
+			lcd_print("close the door back menu");
+			lcd_print_end_line();
+		}
+		else if(disp == 13)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("and back menu");
+			lcd_print_end_line();
+		}
+		while(key == 0)
+		{
+			key = Read_Key();
+			if(key == 'A')
+			{
+				disp--;
+				if(disp < 0)
+				{
+					disp = 13;
+				}
+			}
+			else if(key == 'D')
+			{
+				disp++;
+				if(disp == 14)
+				{
+					disp = 0;
+				}
+			}
+			else if(key == '#')
+			{
+				return 0;
+			}
+			else
+			{
+				key = 0;
+			}
+		}
+		key = 0;
+	}
 }
 
 void option6()
 {
-
-/*
-	Allergy attack
-	
-	
-	If a person is having an allergic attack, and has had one
-	in the past, help them use epinephrine or another drug
-	they are using.
-	# If the attack does not improve, the assessment suggests
-	the following: call an ambulance or take the injured
-	person to the nearest hospital
-*/
-	lcd_clear();
-	lcd_setCursor(1,0);
-	lcd_print("Allergy attack");
-	lcd_setCursor(2,0);
-	lcd_print("Selected");
+	int disp = 0;
+	char key = 0;
+	while(1)
+	{
+		if(disp == 0)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("Allergy attack");
+			lcd_setCursor(2,0);
+			lcd_print("Press D to open");
+			lcd_print_end_line();
+		}
+		else if(disp == 1)
+		{
+			door_open();
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("If a person is");
+			lcd_setCursor(2,0);
+			lcd_print("having an");
+			lcd_print_end_line();
+		}
+		else if(disp == 2)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("allergic attack");
+			lcd_setCursor(2,0);
+			lcd_print("and has had one");
+			lcd_print_end_line();
+		}
+		else if(disp == 3)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("one in the past");
+			lcd_setCursor(2,0);
+			lcd_print("help them use");
+			lcd_print_end_line();
+		}
+		else if(disp == 4)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("epinephrine or");
+			lcd_setCursor(2,0);
+			lcd_print("another drug");
+			lcd_print_end_line();
+		}
+		else if(disp == 5)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("they are using.");
+			lcd_print_end_line();
+		}
+		else if(disp == 6)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("#If the attack");
+			lcd_setCursor(2,0);
+			lcd_print("does not");
+			lcd_print_end_line();
+		}
+		else if(disp == 7)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("improve, the");
+			lcd_setCursor(2,0);
+			lcd_print("assessment");
+			lcd_print_end_line();
+		}
+		else if(disp == 8)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("suggests the");
+			lcd_setCursor(2,0);
+			lcd_print("following: call");
+			lcd_print_end_line();
+		}
+		else if(disp == 9)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("an amblunce or");
+			lcd_setCursor(2,0);
+			lcd_print("take the");
+			lcd_print_end_line();
+		}
+		else if(disp == 10)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("injured person");
+			lcd_setCursor(2,0);
+			lcd_print("to the nearest");
+			lcd_print_end_line();
+		}
+		else if(disp == 11)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("hospital.");
+			lcd_print_end_line();
+		}
+		else if(disp == 12)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("press # to");
+			lcd_setCursor(2,0);
+			lcd_print("close the door back menu");
+			lcd_print_end_line();
+		}
+		else if(disp == 13)
+		{
+			lcd_clear();
+			lcd_setCursor(1,0);
+			lcd_print("and back menu");
+			lcd_print_end_line();
+		}
+		while(key == 0)
+		{
+			key = Read_Key();
+			if(key == 'A')
+			{
+				disp--;
+				if(disp < 0)
+				{
+					disp = 13;
+				}
+			}
+			else if(key == 'D')
+			{
+				disp++;
+				if(disp == 14)
+				{
+					disp = 0;
+				}
+			}
+			else if(key == '#')
+			{
+				return 0;
+			}
+			else
+			{
+				key = 0;
+			}
+		}
+		key = 0;
+	}
 }
 
 void door_open()
